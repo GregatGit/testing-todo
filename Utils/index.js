@@ -18,7 +18,7 @@ export const findByTestAttr = (component, attr) => {
   return wrapper
 }
 
-// export const testStore = (initialState) => {
-//   const createStoreWithMiddleWare = applyMiddleware(...middlewares)(createStore)
-//   return createStoreWithMiddleWare(rootReducer, initialState)
-// }
+export const testStore = (initialState) => {
+  const createStoreWithMiddleWare = applyMiddleware(...middlewares)(createStore)
+  return createStoreWithMiddleWare(rootReducer, initialState)
+}

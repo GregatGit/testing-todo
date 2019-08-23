@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { checkProps, findByTestAttr } from '../../Utils'
 
 import TodoList from './TodoList'
 
@@ -14,7 +15,9 @@ describe('TodoList component', () => {
 
     it('should render without props', () => {
       const componet = setUp()
-      
+      const wrapper = findByTestAttr(componet, 'todoList')
+      console.log(wrapper.debug())
     })
   })
 })
+// import Adapter from 'enzyme-adapter-react-15'
