@@ -6,7 +6,7 @@ import checkPropTypes from 'check-prop-types'
 import { applyMiddleware, createStore} from 'redux'
 
 import rootReducer from '../src/reducers'
-import promise from 'redux-promise'
+import { middlewares } from '../src/createStore'
 
 export const checkProps = (component, expectedProps) => {
   const propsErr = checkPropTypes(component.propTypes, expectedProps, 'props', component.name)
@@ -19,7 +19,7 @@ export const findByTestAttr = (component, attr) => {
 }
 // with middleware
 export const testStore = (initialState) => {
-  const createStoreWithMiddleWare = applyMiddleware(promise)(createStore)
+  const createStoreWithMiddleWare = applyMiddleware(...middlewares)(createStore)
   return createStoreWithMiddleWare(rootReducer, initialState)
 }
 
