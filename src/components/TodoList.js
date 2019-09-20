@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import AddTodo from './AddTodo'
 
 const TodoList = ({ todos }) => {
   return (
@@ -12,6 +13,7 @@ const TodoList = ({ todos }) => {
             })
           : null}
       </ul>
+      <AddTodo />
     </div>
   )
 }
