@@ -1,13 +1,15 @@
 import React, { useState} from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from '../actions'
 
-const AddTodo = () => {
+const AddTodo = ({ addTodo }) => {
   const [todo, setTodo] = useState('')
 
   const handleChange = e => {
     setTodo(e.target.value)
   }
   const handleAddTodo = () => {
-    console.log(todo)
+    addTodo(todo)
   }
   return (
     <div data-test="AddTodo">
@@ -30,4 +32,4 @@ const AddTodo = () => {
   )
 }
 
-export default AddTodo
+export default connect(null, { addTodo })(AddTodo)
