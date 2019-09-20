@@ -10,6 +10,7 @@ const AddTodo = ({ addTodo }) => {
   }
   const handleAddTodo = () => {
     addTodo(todo)
+    setTodo('')
   }
   return (
     <div data-test="AddTodo">
@@ -25,6 +26,7 @@ const AddTodo = ({ addTodo }) => {
         maxLength="20"
         size="20"
         onChange={handleChange}
+        value={todo}
       />
       <h3>{todo}</h3>
       {todo.length > 2 ? <button onClick={handleAddTodo}>ADD TODO</button> : 'must be 3 chars long'}
