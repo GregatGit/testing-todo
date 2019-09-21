@@ -16,6 +16,11 @@ export default function reducer_todos(state = init, action) {
       deleteState.splice(action.payload, 1)
       return deleteState
 
+    case TODO_DONE:
+      const doneState = [...state]
+      doneState[action.payload].done = true 
+      return doneState
+
     default:
       return state
   }
