@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import AddTodo from './AddTodo'
 import { deleteTodo, todoDone } from '../actions'
 
-const TodoList = ({ todos, deleteTodo, todoDone }) => {
+const TodoList = ( {todos, deleteTodo, todoDone }) => {
   const handleDone = index => {
     todoDone(index)
   }
@@ -11,39 +10,31 @@ const TodoList = ({ todos, deleteTodo, todoDone }) => {
     deleteTodo(index)
   }
   return (
-    <div data-test="todoList">
-      Todo List
-      <ul>
-        {todos
-          ? todos.map((todo, index) => {
-             return !todo.done ? (
-                <li 
-                  key={index}
-                >
-                  {todo.todo}
-                  <button onClick={() => handleDelete(index)}>❌</button>
-                  <button onClick={() => handleDone(index)}>✔</button>
-                </li>
-              ) :
-              <li 
-                  key={index}
-                >
-                  <strike>{todo.todo}</strike>
-                  
-                  <button onClick={() => handleDelete(index)}>❌</button>
-                </li>
-            })
-          : <li>You have no todos on your list</li>}
-      </ul>
-      <AddTodo />
+    <div>
+    <ul>
+    {todos
+      ? todos.map((todo, index) => {
+         return !todo.done ? (
+            <li 
+              key={index}
+            >
+              {todo.todo}
+              <button onClick={() => handleDelete(index)}>❌</button>
+              <button onClick={() => handleDone(index)}>✔</button>
+            </li>
+          ) :
+          <li 
+              key={index}
+            >
+              <strike>{todo.todo}</strike>
+              
+              <button onClick={() => handleDelete(index)}>❌</button>
+            </li>
+        })
+      : <li>You have no todos on your list</li>}
+  </ul>
     </div>
   )
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    todos: state.todos,
-  }
-}
-
-export default connect(mapStateToProps, { deleteTodo, todoDone })(TodoList)
+export default connect(null, { deleteTodo, todoDone } )(TodoList)

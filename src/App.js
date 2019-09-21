@@ -1,13 +1,13 @@
 import React from 'react'
 
-import TodoList from './components/TodoList'
+import MainPage from './components/MainPage'
 
 
 function App() {
   return (
     <div>
       My React-Redux App
-      <TodoList />
+      <MainPage />
     </div>
   )
 }
