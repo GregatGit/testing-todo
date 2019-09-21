@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import AddTodo from './AddTodo'
-import { deleteTodo } from '../actions'
+import { deleteTodo, todoDone } from '../actions'
 
-const TodoList = ({ todos, deleteTodo }) => {
+const TodoList = ({ todos, deleteTodo, todoDone }) => {
   const handleDone = index => {
-    console.log(index)
+    todoDone(index)
   }
   const handleDelete = index => {
     deleteTodo(index)
@@ -16,11 +16,20 @@ const TodoList = ({ todos, deleteTodo }) => {
       <ul>
         {todos
           ? todos.map((todo, index) => {
-              return <li 
+             return !todo.done ? (
+                <li 
                   key={index}
                 >
                   {todo.todo}
+                  <button onClick={() => handleDelete(index)}>❌</button>
                   <button onClick={() => handleDone(index)}>✔</button>
+                </li>
+              ) :
+              <li 
+                  key={index}
+                >
+                  <strike>{todo.todo}</strike>
+                  
                   <button onClick={() => handleDelete(index)}>❌</button>
                 </li>
             })
@@ -37,4 +46,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, { deleteTodo })(TodoList)
+export default connect(mapStateToProps, { deleteTodo, todoDone })(TodoList)
