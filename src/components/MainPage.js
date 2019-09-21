@@ -4,10 +4,10 @@ import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 
 
-const MainPage = ({ todos, deleteTodo, todoDone }) => {
+const MainPage = ({ todos }) => {
   return (
     <div data-test="todoList">
-      <h3>Todo List</h3>
+      <h1>TODO LIST</h1>
       <TodoList todos={todos}/>
       <AddTodo />
     </div>
